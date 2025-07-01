@@ -11,11 +11,9 @@ const path = require('path');
 
 app.use(cors());
 app.use(express.json({ limit: '10mb' }))
+require('dotenv').config();
 
-mongoose.connect('mongodb://127.0.0.1:27017/expenseApp', {
-  useNewUrlParser: true,
-  useUnifiedTopology: true,
-}).then(()=>{console.log("database connected successfully")}).catch((e)=>{console.log(e)})
+mongoose.connect(process.env.MONGO_URI).then(()=>{console.log("database connected successfully")}).catch((e)=>{console.log(e)}).catch(err => console.error("MongoDB connection error:", err));
 
 require('./Schemas/userSchema');
 const users = mongoose.model("Users");
