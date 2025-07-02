@@ -200,7 +200,7 @@ app.post('/login', async (req, res) => {
 
   if (!isMatch) return res.status(401).json({ message:"Enter correct password" });
 
-  if (user.role === "partner"){
+  if (user.role === "Partner"){
       res.json({ message:"success_partner" });
   }else{
     res.json({ message:"success_admin"})
