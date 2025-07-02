@@ -120,7 +120,7 @@ app.post('/upload', async (req, res) => {
   try {
     const newImage = new ImageModel({ image });
     await newImage.save();
-    const imageUrl = `http://192.168.129.243:3000/Receipts/${newImage._id}`; 
+    const imageUrl = `https://expense-tracker-backend-production-1e6.up.railway.app/Receipts/${newImage._id}`; 
     res.status(200).json({
         message:"image upload successfully",
         uri:imageUrl,
@@ -134,7 +134,6 @@ app.post('/upload', async (req, res) => {
 
 app.post("/expense",async (req,res)=>{ 
   const { amount,date,category,receiptUri,status,name,voucherPath,email } = req.body;
-  // const formattedDate = format(new Date(date), 'MM/dd/yyyy');
 
   try{
     await expense.create({
