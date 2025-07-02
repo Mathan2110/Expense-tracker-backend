@@ -5,14 +5,15 @@ const bcrypt = require('bcryptjs')
 const cors = require('cors');
 const date = require('date-fns')
 const format = date.format
-const PDFDocument = require('pdfkit');
+const PDFDocument = require('pdfkit'); 
 const fs = require('fs');
 const path = require('path');
+
+
 
 app.use(cors());
 app.use(express.json({ limit: '10mb' }))
 require('dotenv').config();
-
 mongoose.connect(process.env.MONGO_URI).then(()=>{console.log("database connected successfully")}).catch((e)=>{console.log(e)}).catch(err => console.error("MongoDB connection error:", err));
 
 require('./Schemas/userSchema');
