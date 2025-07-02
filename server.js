@@ -192,6 +192,7 @@ app.post("/register",async (req,res)=>{
 app.post('/login', async (req, res) => {
   const { email, password, role } = req.body;
   const user = await users.findOne({ email });
+  console.log(user)
 
   if (!user) return res.status(404).json({ message:"Invalid email"});
 
@@ -199,7 +200,7 @@ app.post('/login', async (req, res) => {
 
   if (!isMatch) return res.status(401).json({ message:"Enter correct password" });
 
-  if (role === "partner"){
+  if (user.role === "partner"){
       res.json({ message:"success_partner" });
   }else{
     res.json({ message:"success_admin"})
